@@ -15,17 +15,17 @@ const canvasHeight = 500;
 const letterA = {
   "size": 80,
   "offsetx": 0,
-  "offsety": 35
+  "offsety": 75
 }
 
 const letterB = {
   "size": 150,
-  "offsetx": 0,
-  "offsety": -145
+  "offsetx": 145,
+  "offsety": 0
 }
 
 const letterC = {
-  "size": 100,
+  "size": 75,
   "offsetx": 30,
   "offsety": 0
 }
@@ -34,7 +34,7 @@ const backgroundColor  = "#caf0f8";
 const strokeColor      = "#03045e";
 
 const darkBlue  = "#0077b6";
-const lightBlue  = "#90e0ef";
+const lightBlue  = "#caf0f8";
 
 function setup () {
   // create the drawing canvas, save the canvas element
@@ -42,8 +42,7 @@ function setup () {
   main_canvas.parent('canvasContainer');
 
   // color/stroke setup
-  stroke(strokeColor);
-  strokeWeight(4);
+  noStroke();
 
   // with no animation, redrawing the screen is not necessary
   noLoop();
@@ -71,9 +70,10 @@ function drawLetter(posx, posy, letterData) {
 
   // draw two circles
   fill(darkBlue);
-  ellipse(posx, posy, 150, 150);
+  // ellipse(posx, posy, 150, 150);
+  base(posx, posy, 100, 6);
   fill(lightBlue);
-  ellipse(pos2x, pos2y, size2, size2);
+  base(pos2x, pos2y, size2, 4);
 }
 
 function keyTyped() {
@@ -83,4 +83,15 @@ function keyTyped() {
   else if (key == '@') {
     saveBlocksImages(true);
   }
+}
+
+function base(x, y, radius, npoints) {
+  let angle = TWO_PI / npoints;
+  beginShape();
+  for (let a = 0; a < TWO_PI; a += angle) {
+    let sx = x + cos(a) * radius;
+    let sy = y + sin(a) * radius;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
 }
