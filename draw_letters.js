@@ -82,6 +82,9 @@ function drawLetter(letterData) {
   strokeWeight(5);
   strokeCap(ROUND);
 
+  drawingContext.shadowBlur = 20;
+  drawingContext.shadowColor = color(white);
+
   beginShape(LINES);
   //point 1
   vertex(shapeLineX, shapeLineY);
