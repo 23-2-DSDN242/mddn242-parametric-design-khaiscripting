@@ -24,7 +24,7 @@ const sliderInfo = [
   ["line7x",   -38, 38],
   ["line7y",   -106.5, 33.5],
   ["line8x",   -38, 38],
-  ["line8y",   -106.5, 33.5]
+  ["line8y",   -106.5, 33.5],
 ];
 
 // PROBABLY DON'T NEED TO EDIT ANYTHING ELSE. STOP HERE.

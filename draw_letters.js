@@ -4,9 +4,11 @@ var systemLineColor = "##525252";
 var systemBoxColor = "#eb1e1e";
 
 /* internal constants */
-const white  = "#ffffff";
+const white  = "#212, 212, 212";
 const black  = "#010101";
 const strokeColor  = "#ffffff";
+let colorFill;
+let lerpVal = 2000;
 
 /*
  * Draw the letter given the letterData
@@ -21,7 +23,38 @@ function drawLetter(letterData) {
   strokeWeight(2);
   angleMode(RADIANS);
 
-  // determine parameters for second circle
+  //#region  set up the color for hexegon
+  colorMode (HSB)
+  let red = color(3, 88, 100);
+  let green = color(119, 88, 100);
+  let blue = color(234, 88, 100);
+
+  //set up for wave effect
+  if(frameCount % 7 == 0 & lerpVal >= 0){
+    lerpVal--;
+  }
+  else if (lerpVal == 0){
+    lerpVal = 2000;
+  }
+
+  let speed = map(lerpVal, 0, 2000, 0, 1);
+  
+  //wave effect
+  if(speed >= 0 && speed < 0.33){
+    let speed2 = map(speed, 0, 0.33, 0, 1)
+    colorFill = lerpColor(red, green, speed2)
+  } 
+  else if (speed > 0.33 && speed < 0.66){
+    let speed2 = map(speed, 0.33, 0.66, 0, 1)
+    colorFill = lerpColor(green, blue, speed2)
+  } 
+  else if (speed > 0.6 && speed <= 1){
+    let speed2 = map(speed, 0.66, 1, 0, 1)
+    colorFill = lerpColor(blue, red, speed2)
+  }
+  //#endregion
+
+  //#region  determine parameters
   let size = letterData["size1"];
   let posx = 50  + letterData["offsetx1"];
   let posy = 150 + letterData["offsety1"];
@@ -41,18 +74,12 @@ function drawLetter(letterData) {
   let shapeLine7Y = 150 + letterData["line7y"];
   let shapeLine8X = 50 + letterData["line8x"];
   let shapeLine8Y = 150 + letterData["line8y"];
-
-  push();
-  translate(posx, posy)
-  rotate(28.8);
-  drawingContext.shadowBlur = 6;
-  drawingContext.shadowColor = color(black);
-  base(0, 0, size, 6);
-  pop();
+  //#endregion
   
+  //#region drawing sticks
   push();
   stroke(white);
-  strokeWeight(6);
+  strokeWeight(5);
   strokeCap(ROUND);
 
   beginShape(LINES);
@@ -81,6 +108,20 @@ function drawLetter(letterData) {
   vertex(shapeLine8X, shapeLine8Y);
   endShape();
   pop();
+  //#endregion
+
+  //#region the hexegon
+  push();
+  translate(posx, posy)
+  rotate(28.8);
+  fill(colorFill);
+  drawingContext.shadowBlur = 9;
+  drawingContext.shadowColor = color(black);
+  drawingContext.shadowBlur = 50;
+  drawingContext.shadowColor = color(colorFill);
+  base(0, 0, size, 6);
+  pop();
+  //#endregion
 }
 
 function interpolate_letter(percent, oldObj, newObj) {
@@ -104,6 +145,7 @@ function interpolate_letter(percent, oldObj, newObj) {
   new_letter["line7y"] = map(percent, 0, 100, oldObj["line5y"], newObj["line5y"]);
   new_letter["line8x"] = map(percent, 0, 100, oldObj["line5x"], newObj["line5x"]);
   new_letter["line8y"] = map(percent, 0, 100, oldObj["line5y"], newObj["line5y"]);
+  new_letter["colorVal"] = map(percent, 0, 100, oldObj["colorVal"], newObj["colorVal"]);
   return new_letter;
 }
 
