@@ -1,10 +1,10 @@
 /* these are optional special variables which will change the system */
-var systemBackgroundColor = "#252626";
+var systemBackgroundColor = "#060505 ";
 var systemLineColor = "##525252";
 var systemBoxColor = "#eb1e1e";
 
 /* internal constants */
-const white  = "#212, 212, 212";
+const white  = "#ffffff";
 const black  = "#010101";
 const strokeColor  = "#ffffff";
 let colorFill;
@@ -76,14 +76,15 @@ function drawLetter(letterData) {
   let shapeLine8Y = 150 + letterData["line8y"];
   //#endregion
   
+  colorMode(RGB);
   //#region drawing sticks
   push();
-  stroke(white);
-  strokeWeight(5);
+  stroke(strokeColor);
+  strokeWeight(4);
   strokeCap(ROUND);
 
   drawingContext.shadowBlur = 20;
-  drawingContext.shadowColor = color(white);
+  drawingContext.shadowColor = color(colorFill);
 
   beginShape(LINES);
   //point 1
@@ -118,8 +119,6 @@ function drawLetter(letterData) {
   translate(posx, posy)
   rotate(28.8);
   fill(colorFill);
-  drawingContext.shadowBlur = 9;
-  drawingContext.shadowColor = color(black);
   drawingContext.shadowBlur = 50;
   drawingContext.shadowColor = color(colorFill);
   base(0, 0, size, 6);
@@ -131,7 +130,7 @@ function interpolate_letter(percent, oldObj, newObj) {
   let new_letter = {};
 
   if (percent <= 50){
-    new_letter["size1"]    = map(percent, 0, 50, oldObj["size1"], 37);
+    new_letter["size1"]    = map(percent, 0, 50, oldObj["size1"], 10);
   new_letter["offsetx1"] = map(percent, 0, 50, oldObj["offsetx1"], 0);
   new_letter["offsety1"] = map(percent, 0, 50, oldObj["offsety1"], -50);
   new_letter["line1x"] = map(percent, 0, 50, oldObj["line1x"], 0);
@@ -152,7 +151,7 @@ function interpolate_letter(percent, oldObj, newObj) {
   new_letter["line8y"] = map(percent, 0, 50, oldObj["line8y"], -36.5);
   }
   if (percent >= 50){
-    new_letter["size1"]    = map(percent, 50, 100, 37, newObj["size1"]);
+    new_letter["size1"]    = map(percent, 50, 100, 10, newObj["size1"]);
   new_letter["offsetx1"] = map(percent, 50, 100, 0, newObj["offsetx1"]);
   new_letter["offsety1"] = map(percent, 50, 100, -50, newObj["offsety1"]);
   new_letter["line1x"] = map(percent, 50, 100, 0, newObj["line1x"]);
