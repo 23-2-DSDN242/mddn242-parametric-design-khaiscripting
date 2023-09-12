@@ -768,6 +768,26 @@ const alphabet = {
   "line7y": 33.5,
   "line8x": 38,
   "line8y": 33.5
+  },
+  "?": {
+  "size1": 37,
+  "offsetx1": 0,
+  "offsety1": -50,
+  "line1x": 0,
+  "line1y": -36.5,
+  "line2x": 0,
+  "line2y": -36.5,
+  "line3x": 0,
+  "line3y": -36.5,
+  "line4x": 0,
+  "line4y": -36.5,
+  "line5x": 0,
+  "line5y": -36.5,
+  "line6x": 0,
+  "line6y": -36.5,
+  "line7x": 0,
+  "line7y": -36.5,
+  "line8x": 0,
+  "line8y": -36.5
   }
-
 }

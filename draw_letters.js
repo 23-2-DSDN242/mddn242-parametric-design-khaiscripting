@@ -129,26 +129,50 @@ function drawLetter(letterData) {
 
 function interpolate_letter(percent, oldObj, newObj) {
   let new_letter = {};
-  new_letter["size1"]    = map(percent, 0, 100, oldObj["size1"], newObj["size1"]);
-  new_letter["offsetx1"] = map(percent, 0, 100, oldObj["offsetx1"], newObj["offsetx1"]);
-  new_letter["offsety1"] = map(percent, 0, 100, oldObj["offsety1"], newObj["offsety1"]);
-  new_letter["line1x"] = map(percent, 0, 100, oldObj["line1x"], newObj["line1x"]);
-  new_letter["line1y"] = map(percent, 0, 100, oldObj["line1y"], newObj["line1y"]);
-  new_letter["line2x"] = map(percent, 0, 100, oldObj["line2x"], newObj["line2x"]);
-  new_letter["line2y"] = map(percent, 0, 100, oldObj["line2y"], newObj["line2y"]);
-  new_letter["line3x"] = map(percent, 0, 100, oldObj["line3x"], newObj["line3x"]);
-  new_letter["line3y"] = map(percent, 0, 100, oldObj["line3y"], newObj["line3y"]);
-  new_letter["line4x"] = map(percent, 0, 100, oldObj["line4x"], newObj["line4x"]);
-  new_letter["line4y"] = map(percent, 0, 100, oldObj["line4y"], newObj["line4y"]);
-  new_letter["line5x"] = map(percent, 0, 100, oldObj["line5x"], newObj["line5x"]);
-  new_letter["line5y"] = map(percent, 0, 100, oldObj["line5y"], newObj["line5y"]);
-  new_letter["line6x"] = map(percent, 0, 100, oldObj["line5x"], newObj["line5x"]);
-  new_letter["line6y"] = map(percent, 0, 100, oldObj["line5y"], newObj["line5y"]);
-  new_letter["line7x"] = map(percent, 0, 100, oldObj["line5x"], newObj["line5x"]);
-  new_letter["line7y"] = map(percent, 0, 100, oldObj["line5y"], newObj["line5y"]);
-  new_letter["line8x"] = map(percent, 0, 100, oldObj["line5x"], newObj["line5x"]);
-  new_letter["line8y"] = map(percent, 0, 100, oldObj["line5y"], newObj["line5y"]);
-  new_letter["colorVal"] = map(percent, 0, 100, oldObj["colorVal"], newObj["colorVal"]);
+
+  if (percent <= 50){
+    new_letter["size1"]    = map(percent, 0, 50, oldObj["size1"], 37);
+  new_letter["offsetx1"] = map(percent, 0, 50, oldObj["offsetx1"], 0);
+  new_letter["offsety1"] = map(percent, 0, 50, oldObj["offsety1"], -50);
+  new_letter["line1x"] = map(percent, 0, 50, oldObj["line1x"], 0);
+  new_letter["line1y"] = map(percent, 0, 50, oldObj["line1y"], -36.5);
+  new_letter["line2x"] = map(percent, 0, 50, oldObj["line2x"], 0);
+  new_letter["line2y"] = map(percent, 0, 50, oldObj["line2y"], -36.5);
+  new_letter["line3x"] = map(percent, 0, 50, oldObj["line3x"], 0);
+  new_letter["line3y"] = map(percent, 0, 50, oldObj["line3y"], -36.5);
+  new_letter["line4x"] = map(percent, 0, 50, oldObj["line4x"], 0);
+  new_letter["line4y"] = map(percent, 0, 50, oldObj["line4y"], -36.5);
+  new_letter["line5x"] = map(percent, 0, 50, oldObj["line5x"], 0);
+  new_letter["line5y"] = map(percent, 0, 50, oldObj["line5y"], -36.5);
+  new_letter["line6x"] = map(percent, 0, 50, oldObj["line6x"], 0);
+  new_letter["line6y"] = map(percent, 0, 50, oldObj["line6y"], -36.5);
+  new_letter["line7x"] = map(percent, 0, 50, oldObj["line7x"], 0);
+  new_letter["line7y"] = map(percent, 0, 50, oldObj["line7y"], -36.5);
+  new_letter["line8x"] = map(percent, 0, 50, oldObj["line8x"], 0);
+  new_letter["line8y"] = map(percent, 0, 50, oldObj["line8y"], -36.5);
+  }
+  if (percent >= 50){
+    new_letter["size1"]    = map(percent, 50, 100, 37, newObj["size1"]);
+  new_letter["offsetx1"] = map(percent, 50, 100, 0, newObj["offsetx1"]);
+  new_letter["offsety1"] = map(percent, 50, 100, -50, newObj["offsety1"]);
+  new_letter["line1x"] = map(percent, 50, 100, 0, newObj["line1x"]);
+  new_letter["line1y"] = map(percent, 50, 100, -36.5, newObj["line1y"]);
+  new_letter["line2x"] = map(percent, 50, 100, 0, newObj["line2x"]);
+  new_letter["line2y"] = map(percent, 50, 100, -36.5, newObj["line2y"]);
+  new_letter["line3x"] = map(percent, 50, 100, 0, newObj["line3x"]);
+  new_letter["line3y"] = map(percent, 50, 100, -36.5, newObj["line3y"]);
+  new_letter["line4x"] = map(percent, 50, 100, 0, newObj["line4x"]);
+  new_letter["line4y"] = map(percent, 50, 100, -36.5, newObj["line4y"]);
+  new_letter["line5x"] = map(percent, 50, 100, 0, newObj["line5x"]);
+  new_letter["line5y"] = map(percent, 50, 100, -36.5, newObj["line5y"]);
+  new_letter["line6x"] = map(percent, 50, 100, 0, newObj["line6x"]);
+  new_letter["line6y"] = map(percent, 50, 100, -36.5, newObj["line6y"]);
+  new_letter["line7x"] = map(percent, 50, 100, 0, newObj["line7x"]);
+  new_letter["line7y"] = map(percent, 50, 100, -36.5, newObj["line7y"]);
+  new_letter["line8x"] = map(percent, 50, 100, 0, newObj["line8x"]);
+  new_letter["line8y"] = map(percent, 50, 100, -36.5, newObj["line8y"]);
+  }
+
   return new_letter;
 }
 
