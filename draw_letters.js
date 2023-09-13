@@ -84,7 +84,7 @@ function drawLetter(letterData) {
   strokeCap(ROUND);
 
   drawingContext.shadowBlur = 20;
-  drawingContext.shadowColor = color(colorFill);
+  drawingContext.shadowColor = color(strokeColor);
 
   beginShape(LINES);
   //point 1
@@ -187,7 +187,7 @@ function base(x, y, radius, npoints) {
 }
 
 var swapWords = [
-  "ABBAABBA",
-  "CAB?CAB?",
-  "BAAAAAAA"
+  "HEXATYPE",
+  " BY KHAI",
+  " MDDN242"
 ]
